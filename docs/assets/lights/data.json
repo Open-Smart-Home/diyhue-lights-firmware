@@ -1,0 +1,148 @@
+{
+    "lights": {
+        "extsud_10w": {
+            "id" : "extsud_10w",
+            "difficultyLevel": "0",
+            "brandName": "EXTSUD",
+            "modelName": "WiFi Smart Led Bulb",
+            "powerWatt": 10,
+            "connectorType": 0,
+            "type": 1,
+            "whereToBuyLinksList": [
+                {
+                    "name": "Amazon IT",
+                    "url": "https://www.amazon.it/gp/product/B07FKQ7N9Q"
+                }
+            ],
+            "imagesList": {
+                "cover": "cover.jpg",
+                "overview": [
+                ],
+                "teardown": [
+                    "DSC_0849.JPG",
+                    "DSC_0850.JPG",
+                    "DSC_0851.JPG"
+                ],
+                "flashConnections": []
+            },
+            "description": "This bulb is a full RGB color plus white light. Disassemble it is very easy: just pull with some force the plastic bulb and the internal PCB is exposed. After a rapid inspection it seems derived from <a href='http://tinkerman.cat/ailight-hackable-rgbw-light-bulb/' target='_blank'>Ai-Light design</a>, so it uses an ESP8266 chip and a MY9291 led driver. The light is good, colors are bright and it is a good choice for medium/large room.",
+            "hardwareMod": "When PCB is exposed, you can easily see 5 round silver-plated pads, named RX, TX, IO0, GND, 3V3. So you have to take 5 short wires and solder each one on different pad, like you can see in the photos. Then you have to connect the wires the programmer: keep as last the 3.3V so module won't start up. The IO0 is GPIO0 of the ESP8266 and it MUST be pulled-down to GND to program. So connect it to GND wire.",
+            "firmwareConfig": {
+                "platform" : "Generic ESP8266 (or NodeMCU, etc)",
+                "define" : "MY9291"
+            }
+        },
+        "wifiBulb_4.5w": {
+            "id" : "wifiBulb_4.5w",
+            "difficultyLevel": "1",
+            "brandName": "N.A.",
+            "modelName": "wifiBulb",
+            "powerWatt": 4.5,
+            "connectorType": 0,
+            "type": 1,
+            "whereToBuyLinksList": [
+                {
+                    "name": "Amazon IT",
+                    "url": "https://www.amazon.it/gp/product/B07MKK17YN"
+                }
+            ],
+            "imagesList": {
+                "cover": "cover.jpg",
+                "overview": [
+                    "photo_2019-03-01_11-36-13.jpg"
+                ],
+                "teardown": [
+                    "DSC_0844.JPG",
+                    "DSC_0847.JPG"
+                ],
+                "flashConnections": [
+                    "DSC_0859_Mod.JPG",
+                    "photo_2019-03-01_11-35-34.jpg"
+                ]
+            },
+            "description": "This bulb is a full RGB color plus white light. The light colors are good but due to the low watts the best of this light is achieved using it with white spectrum (warm or cold). It is a good choice for bedrooms used as bedside table lamp. Disassemble it is very easy: just pull with some force the plastic bulb and the internal PCB is exposed.",
+            "hardwareMod": "Once the plastic bulb is removed you can see the PCB with LEDs and an hole in the center to leave space for the micro-controller. You need to get access to the pins near the micro-controller as you can see in the images (red-circle). First step is to desoldering away the LEDs PCB from the micro-controller PCB. Now you have to solder flashing wires to the micro-controller PCB. This step is not very easy, due to the PCB cannot be extracted and you have to solder in a very tight space (to make this tutorial I brute-force extracted the PCB and re-solder it with new AC wires, but this operation may destroy the lamp so if you can, avoid it).",
+            "firmwareConfig": {
+                "platform" : "Generic ESP8285",
+                "define" : "PWM_RGBW_ESP8285",
+                "extraStep" : [
+                    {
+                        "text" : "In the same configuration file check these settings (and change if not equals):",
+                        "code" : "#ifdef PWM_RGBW_ESP8285<br>#define PWM_RED     5<br>#define PWM_GREEN   14<br>#define PWM_BLUE    12<br>#define PWM_WHITE   13<br>#endif"
+                    }
+                ]
+            }
+        },
+        "anoopsyche_wifi_smart_bulb_9w": {
+            "id" : "anoopsyche_wifi_smart_bulb_9w",
+            "difficultyLevel": "2",
+            "brandName": "Anoopsyche.",
+            "modelName": "Wifi Smart Bulb",
+            "powerWatt": 9,
+            "connectorType": 0,
+            "type": 3,
+            "whereToBuyLinksList": [
+                {
+                    "name": "Amazon IT",
+                    "url": "https://www.amazon.it/gp/product/B07HL2RTNR"
+                }
+            ],
+            "imagesList": {
+                "cover": "cover.jpg",
+                "overview": [
+                    "photo_2019-03-01_16-36-20.jpg"
+                ],
+                "teardown": [
+                    "DSC_0853.JPG",
+                    "DSC_0855.JPG",
+                    "DSC_0856.JPG",
+                    "DSC_0857.JPG"
+                ],
+                "flashConnections": []
+            },
+            "description": "This bulb is a warm + cold white light only. The light is good and regulation of the white temperature make lamp perfect for living rooms or kitchen or for any place where you need white light of different kind. TO disassemble it a cutter is required due to the plastic bulb is glued to the lamp body. Insert the cutter and slowly turn the light, then pull the plastic bulb and it come off.",
+            "hardwareMod": "When I opened the light I find almost the entire electronics was covered by some kind of rubber/resin. I had to remove it to inspect the PCB and you have to do the same to flash. Fortunately the amount of resin to remove is not so much and it came off easily, but then the soldering points are quite hard to access. In few words: you can flash this light, but my suggestion is to choose another model.",
+            "firmwareConfig": {
+                "platform" : "Generic ESP8285",
+                "define" : "PWM_CT_TYWE3S",
+                "extraStep" : [
+                    {
+                        "text" : "In the same configuration file check these settings (and change if not equals):",
+                        "code" : "#ifdef PWM_CT_TYWE3S\n#define PWM_WARM_WHITE   13\n#define PWM_COOL_WHITE   5\n#endif"
+                    }
+                ]
+            }
+        },
+        "itutech_wifi_smart_bulb_11w": {
+            "id" : "itutech_wifi_smart_bulb_11w",
+            "difficultyLevel": "0",
+            "brandName": "itutech",
+            "modelName": "Wifi Bulb",
+            "powerWatt": 11,
+            "connectorType": 0,
+            "type": 1,
+            "whereToBuyLinksList": [
+                {
+                    "name": "Amazon IT",
+                    "url": "https://www.amazon.it/dp/B07J247FM2"
+                }
+            ],
+            "imagesList": {
+                "cover": "cover.jpg",
+                "overview": [],
+                "teardown": [
+                    "photo_2019-03-04_22-31-27.jpg"
+                ],
+                "flashConnections": []
+            },
+            "description": "This bulb is a full RGB color plus white light. Disassemble it is very easy: just pull with some force the plastic bulb and the internal PCB is exposed. After a rapid inspection it seems derived from <a href='http://tinkerman.cat/ailight-hackable-rgbw-light-bulb/' target='_blank'>Ai-Light design</a>, so it uses an ESP8266 chip and a MY9291 led driver. The light is good, colors are bright and it is a good choice for medium/large room.",
+            "hardwareMod": "When PCB is exposed, you can easily see 5 round silver-plated pads, named RX, TX, IO0, GND, 3V3. So you have to take 5 short wires and solder each one on different pad, like you can see in the photos. Then you have to connect the wires the programmer: keep as last the 3.3V so module won't start up. The IO0 is GPIO0 of the ESP8266 and it MUST be pulled-down to GND to program. So connect it to GND wire.",
+            "firmwareConfig": {
+                "platform" : "Generic ESP8266 (or NodeMCU, etc)",
+                "define" : "MY9291",
+                "extraStep" : []
+            }
+        }
+
+    }
+}
